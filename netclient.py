@@ -37,7 +37,7 @@ class Netclient:
 
         match = termex.search(self.buffer)
         while match == None:
-            self.buffer += self.sock.recv(maxlen)        
+            self.buffer += self.sock.recv(maxlen).decode("latin-1")       
             match = termex.search(self.buffer)
             
         rc = self.buffer[:match.start(1)]            
